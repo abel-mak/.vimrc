@@ -1,4 +1,5 @@
 # .vimrc
+```
 set ru<br>
 call plug#begin('~/.vim/plugged')<br>
 set colorcolumn=80<br>
@@ -41,3 +42,4 @@ let g:UltiSnipsExpandTrigger="<c-a>"<br>
 "-------<br>
 map te :tabedit<br>
 map g5 gT<br>
+```
