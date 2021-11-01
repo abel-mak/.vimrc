@@ -71,6 +71,7 @@ let g:clang_format#style_options = {
 			\ "AllowShortIfStatementsOnASingleLine" : "Never",
 			\ "PointerAlignment": "Right",
 			\ "DerivePointerAlignment": "false",
+			\ "Standard": "C++03",
 			\ "AllowShortFunctionsOnASingleLine" : "None"}
 
 autocmd BufWritePost *.cpp,*.c,*.js,*.h,*.hpp :ClangFormat
@@ -81,3 +82,4 @@ autocmd BufWritePost *.cpp,*.c,*.js,*.h,*.hpp :ClangFormat
 let g:ale_fixers = {
 			\ 'yaml': ['prettier'],
 			\}
+let g:ale_completion_enabled = 1
