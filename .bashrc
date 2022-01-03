@@ -1,6 +1,21 @@
+
+# FREE SPACE COMMANDS
+# symlink to ~/Library/ApplicationSupport/Spotify
+mkdir /Users/abel-mak/goinfre/PersistentCache 2> /dev/null
+# symlink ~/Library/ApplicationSupport/discord/Cache
+mkdir /Users/abel-mak/goinfre/discordCache/ 2> /dev/null
+# symlink ~/.brew/Library/Taps/homebrew
+mkdir /Users/abel-mak/goinfre/homebrew 2> /dev/null
+# simlink ~/Library/Caches
+mkdir /Users/abel-mak/goinfre/Caches 2> /dev/null
+#simlink
+mkdir /Users/abel-mak/goinfre/Cellar 2> /dev/null
+
+
 # alias nasm=/Users/abel-mak/.brew/Cellar/nasm/2.15.05/bin/nasm
 export MAIL=abel-mak@student.1337.ma
 export PATH=$HOME/.brew/bin:$HOME/.brew/sbin:$PATH
+export PATH=/Users/abel-mak/goinfre/macports/bin:$PATH
 export HISTCONTROL=ignoreboth:erasedups
 #export VALGRIND_LIB="$HOME/valgrind/lib/valgrind"
 #export PS1="\[\033[38;5;9m\]\h\[$(tput sgr0)\]\[\033[38;5;7m\]%\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
@@ -9,9 +24,12 @@ export HISTCONTROL=ignoreboth:erasedups
 #eval $(minikube docker-env)
 
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-cd 
+export PATH=$PATH:$HOME/.node/bin
+cd
 #docker-machine start defaukt
 #eval $(docker-machine env default)
+MM='\033[38;5;177m'
+
 bind "set completion-ignore-case on"
 alias gcl='git clone'
 alias sl='ls'
@@ -19,7 +37,7 @@ alias ll='ls -l'
 alias la='ls -la'
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
-export PS1="\[\033[38;5;11m\]\u\[$(tput sgr0)\]\[\033[38;5;7m\]@\[$(tput sgr0)\]\[\033[38;5;51m\]\h\[$(tput sgr0)\]\[\033[38;5;7m\][\[$(tput sgr0)\]\[\033[38;5;9m\]\w\[$(tput sgr0)\]\[\033[38;5;7m\]]\`parse_git_branch\`\\$ \[$(tput sgr0)\]"
+export PS1="\[\033[38;5;11m\]\u\[$(tput sgr0)\]\[\033[38;5;7m\]@\[$(tput sgr0)\]\[\033[38;5;51m\]\h\[$(tput sgr0)\]\[\033[38;5;7m\][\[$(tput sgr0)\]\[\033[38;5;9m\]\w\[$(tput sgr0)\]\[\033[38;5;7m\]]\[${MM}\]\`parse_git_branch\`\[$(tput sgr0)\]\\$ \[$(tput sgr0)\]"
 
 #added from brew instalation of bash_completion
 #Bash completion has been installed to:
@@ -30,6 +48,9 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
 fi
 #bash_completion
 
+NOCOLOR='\033[0m'
+RED='\033[0;31m'
+MM='\033[38;5;177m'
 
 # get current branch in git repo
 function parse_git_branch() {
@@ -37,7 +58,7 @@ function parse_git_branch() {
 	if [ ! "${BRANCH}" == "" ]
 	then
 		STAT=`parse_git_dirty`
-		echo "(${BRANCH}${STAT})"
+		echo -e "(${BRANCH}${STAT})"
 	else
 		echo ""
 	fi
@@ -84,3 +105,6 @@ del()
 {
 	mv $@ ~/.Trash/
 }
+
+#brew update
+export HOMEBREW_NO_AUTO_UPDATE=1
