@@ -23,6 +23,8 @@ nnoremap <C-k> <C-d>
 Plug 'vim-scripts/OmniCppComplete'
 Plug 'dense-analysis/ale'
 Plug 'honza/vim-snippets'
+Plug 'pangloss/vim-javascript'
+Plug 'bfrg/vim-cpp-modern'
 call plug#end()
 let g:ale_fix_on_save = 1
 " -------
@@ -81,5 +83,23 @@ autocmd BufWritePost *.cpp,*.c,*.js,*.h,*.hpp :ClangFormat
 " ------auto fix ale
 let g:ale_fixers = {
 			\ 'yaml': ['prettier'],
+			\ 'typescipt': [],
+			\ 'ruby': ['ruby']
 			\}
+
+let g:ale_linters = {
+\   'typescript': [],
+\	'ruby':['ruby']
+\}
+
 let g:ale_completion_enabled = 1
+
+"persistent undo
+let vimDir = '$HOME/goinfre'
+if has('persistent_undo')
+    let myUndoDir = expand(vimDir . '/undodir')
+    " Create dirs
+    call system('mkdir ' . myUndoDir)
+    let &undodir = myUndoDir
+    set undofile
+endif
